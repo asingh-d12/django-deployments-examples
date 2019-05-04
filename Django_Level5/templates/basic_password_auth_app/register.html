@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "basic_password_auth_app/base.html" %}
+{% load staticfiles %}
+{% block 'body_block' %}
+  <div class="jumbotron">
+    {%if registered %}
+      <h1>Thank You for the registration</h1>
+    {% else %}
+    <h1>Register</h1>
+    <h2>Please fill the form to complete registration!!</h2>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{user_form.as_p}}
+        {{user_profile_form.as_p}}
+        <input type="submit" value="Register">
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}
